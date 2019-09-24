@@ -66,7 +66,7 @@ int main(void) {
 	
 	Square first(n1), second(n2), third(0);
 	
-	third = first.squ(second);
+	third = first.squ(second);  // 此時進入squ後， this->a 表示的是first這個物件的a成員。b.a 則為second的a成員。
 	
 	third.show_data();
 	
