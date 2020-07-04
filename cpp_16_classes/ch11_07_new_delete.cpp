@@ -30,7 +30,22 @@ new, delte 的使用方式
 		
 		delete m;
 	}   
-  
+===============================
+執行結果
+
+cc@cpp_16_classes$./main 
++++++執行建構子+++++
+輸入學號
+學號 : 12345
+輸入英文成績 : 
+99
+輸入數學成績 : 
+98
+==============
+學號12345
+總分是197分，平均是98.5分
+-----執行解構子-----
+
 */
 
 
@@ -38,69 +53,69 @@ new, delte 的使用方式
 #include <cstdlib>
 using namespace std; // std 為標準程式庫的命名空間
 
-class Student			//宣告類別
+class Student       //宣告類別
 {
-private:				//私用資料成員
-	char StuID[8];	
-	float Score_E, Score_M, Score_T, Score_A;
-	
-public:					//公用資料成員
-	Student();			//宣告預設建構子(constructor)
-	~Student();			//宣告解構子(destructor)
-	
-	void input_data();	//宣告成員函數的原型
-	void show_data();
-};						// 記得加上 ";"		#### 重要
+    private:            //私用資料成員
+        char StuID[8];	
+        float Score_E, Score_M, Score_T, Score_A;
 
-Student::Student()		//constructor設定資料成員的初始值	
+    public:             //公用資料成員
+        Student();      //宣告預設建構子(constructor)
+        ~Student();     //宣告解構子(destructor)
+
+    void input_data();  //宣告成員函數的原型
+    void show_data();
+};  // 記得加上 ";"		#### 重要
+
+Student::Student()      //constructor設定資料成員的初始值	
 {
-	cout << "+++++執行建構子+++++" << endl;
+    cout << "+++++執行建構子+++++" << endl;
 }
 
-Student::~Student()		//destructor
+Student::~Student()     //destructor
 {
-	cout << "-----執行解構子-----" << endl;
+    cout << "-----執行解構子-----" << endl;
 }
 
-void Student::input_data()		//實作input_data	
+void Student::input_data()      //實作input_data	
 {
-	//cout 用來輸出的物件
-	//endl : end of line，換行，同 '\n'
-	cout << "輸入學號" << endl;
-	cout << "學號 : " ;
-	cin >> StuID;
-	
-	cout << "輸入英文成績 : " << endl;
-	cin >> Score_E;
-	
-	cout << "輸入數學成績 : " << endl;
-	cin >> Score_M;
+    //cout 用來輸出的物件
+    //endl : end of line，換行，同 '\n'
+    cout << "輸入學號" << endl;
+    cout << "學號 : " ;
+    cin >> StuID;
+
+    cout << "輸入英文成績 : " << endl;
+    cin >> Score_E;
+
+    cout << "輸入數學成績 : " << endl;
+    cin >> Score_M;
 }
 
-void Student::show_data()		//實作show_data	
+void Student::show_data()       //實作show_data	
 {
-	Score_T = Score_E + Score_M;
-	Score_A = (Score_E + Score_M)/2;
-	
-	//cout 用來輸出的物件
-	//endl : end of line，換行，同 '\n'
-	cout << "==============" << endl;
-	cout << "學號" << StuID << endl;
-	cout << "總分是" << Score_T << "分，平均是" << Score_A << "分" << endl;
+    Score_T = Score_E + Score_M;
+    Score_A = (Score_E + Score_M)/2;
+
+    //cout 用來輸出的物件
+    //endl : end of line，換行，同 '\n'
+    cout << "==============" << endl;
+    cout << "學號" << StuID << endl;
+    cout << "總分是" << Score_T << "分，平均是" << Score_A << "分" << endl;
 }
 
 int main(void) {
 	
-	Student *stud1 = new Student;		//宣告class Student 的 指標物件，此時會呼叫無參數的建構
-	
-	stud1->input_data();
-	
-	stud1->show_data();
-	
-	delete stud1;						//呼叫解構子
-	
-	
-	return 0;
+    Student *stud1 = new Student;   //宣告class Student 的 指標物件，此時會呼叫無參數的建構
+
+    stud1->input_data();
+
+    stud1->show_data();
+
+    delete stud1;						//呼叫解構子 (delete 指標的名字)
+
+
+    return 0;
 }
 
 
