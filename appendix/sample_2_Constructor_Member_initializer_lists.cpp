@@ -28,29 +28,28 @@ private:
     char m_value3;
  
 public:
+    //The member initializer list is inserted after the constructor parameters. It begins with a colon (:), and then lists each variable to initialize along with the value for that variable separated by a comma.
 
-//The member initializer list is inserted after the constructor parameters. It begins with a colon (:), and then lists each variable to initialize along with the value for that variable separated by a comma.
-
-    Something(int value1, double value2, char value3='c')
+    Something(int value1, double value2, char value3 ='c')
         : m_value1(value1), m_value2(value2), m_value3(value3) // directly initialize our member variables
     {
-    // No need for assignment here
+        // No need for assignment here
     }
- 
+
     void print()
     {
-         cout << "Something(" << m_value1 << ", " << m_value2 << ", " << m_value3 << ")\n";
+        cout << "Something(" << m_value1 << ", " << m_value2 << ", " << m_value3 << ")\n";
     }
  
 };
 
 
 int main(void) {
-	
-	Something something(1, 2.2); // value1 = 1, value2=2.2, value3 gets default value 'c'
+
+    Something something(1, 2.2); // value1 = 1, value2=2.2, value3 gets default value 'c'
     something.print();
 
-	return 0;
+    return 0;
 }
 
 

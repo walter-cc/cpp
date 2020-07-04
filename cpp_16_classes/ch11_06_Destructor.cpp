@@ -39,55 +39,62 @@
   
 
 # C++ 也支援「動態記憶體管理」，因此除了一般的物件建立方式，可以使用「new」和「delete」指令來做指標物件建立與釋放的工作。
-  
+===============================
+執行結果
+
+cc@cpp_16_classes$./main 
+建構子執行完成
+解構子被呼叫，顯示陣列內容
+0123456789解構子執行完成
+
+
 */
 
 #include <iostream>	// 引入標準程式庫中相關的輸入、輸出程式
 #include <cstdlib>
 using namespace std; // std 為標準程式庫的命名空間
 
-class testN			//宣告類別
+class testN         //宣告類別
 {
-private:				//私用資料成員
-	int no[20];	
-	int i;
+    private:            //私用資料成員
+        int no[20];	
+        int i;
+
+    public:         //公用資料成員
+        testN()     //宣告預設建構子(constructor)
+        {
+            int i;
+            for(i = 0; i < 10; i++)
+            {
+            no[i] = i;
+            }
+            cout << "建構子執行完成" << endl ;
+        }
+
+    ~testN()        //宣告解構子(destructor)
+    {
+        cout << "解構子被呼叫，顯示陣列內容" << endl ;
+        int i;
+        for(i = 0; i < 10; i++)
+        {
+            cout << no[i] << "" ;
+        }
+        cout << "解構子執行完成" << endl ;
+    }
 	
-public:					//公用資料成員
-	testN()			//宣告預設建構子(constructor)
-	{
-		int i;
-		for(i = 0; i < 10; i++)
-		{
-			no[i] = i;
-		}
-		cout << "建構子執行完成" << endl ;
-	}
-	
-	~testN()			//宣告解構子(destructor)
-	{
-		cout << "解構子被呼叫，顯示陣列內容" << endl ;
-		int i;
-		for(i = 0; i < 10; i++)
-		{
-			cout << no[i] << "" ;
-		}
-		cout << "解構子執行完成" << endl ;
-	}
-	
-};						// 記得加上 ";"		#### 重要
+};  // 記得加上 ";"		#### 重要
 
 int show_result()
 {
-	testN test1;	//物件離開程式區塊前，會自動呼叫解構子
-	return 0;
+    testN test1;    //物件離開程式區塊前，會自動呼叫解構子
+    return 0;
 }
 	
 int main(void) {
-	
-	show_result();
 
-	
-	return 0;
+    show_result();
+
+    return 0;
 }
 
 
