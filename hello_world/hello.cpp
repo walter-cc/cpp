@@ -16,7 +16,7 @@ int main(void) {
 	
 	//cout 用來輸出的物件
 	//endl : end of line，換行，同 '\n'
-	cout << "Hello walter!" << endl;
+	cout << "Hello Walter!!" << endl;
 	
 	return 0;
 }
