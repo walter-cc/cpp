@@ -20,75 +20,68 @@
 using namespace std; 	// std 為標準程式庫的命名空間
 
 
-
-class vehicle			//宣告類別
+class vehicle       //宣告類別
 {
-public:					//公用資料成員
-
-	void start()
-	{
-		cout << "父 運輸工具 start" << endl;
-	}
-	void stop()
-	{
-		cout << "父 運輸工具 stop" << endl;
-	}
-
-};				// 記得加上 ";"		#### 重要
+public:             //公用資料成員
+    void start()
+    {
+        cout << "父 運輸工具 start" << endl;
+    }
+    void stop()
+    {
+        cout << "父 運輸工具 stop" << endl;
+    }
+};      // 記得加上 ";"		#### 重要
 
 
 // 繼承。aircraft(子) vehicle(父)。「左子右父」
-class aircraft: public vehicle				//宣告類別
+class aircraft: public vehicle      //宣告類別
 {
-public:										//公用資料成員
-
-	void start()
+public:             //公用資料成員
+    void start()
     {
         cout << "子 飛機 start" << endl;
     }
-	void stop()	
+    void stop()
     {
         cout << "子 飛機 stop" << endl;
     }
-
-};				// 記得加上 ";"		#### 重要
+};      // 記得加上 ";"		#### 重要
 
 
 // 繼承。car(子) vehicle(父)。「左子右父」
-class car: public vehicle					//宣告類別
+class car: public vehicle       //宣告類別
 {
-public:										//公用資料成員
-
-	void start()
+public:             //公用資料成員
+    void start()
     {
         cout << "子 汽車 start" << endl;
     }
-    void stop()	
-	{
+    void stop()
+    {
         cout << "子 汽車 stop" << endl;
     }
-
-};				// 記得加上 ";"		#### 重要
+};  // 記得加上 ";"		#### 重要
 
 
 
 int main(void) {
 
-	vehicle* ve = new vehicle;	// 抽象基礎類別不可實體化，所以只能宣告「指標」
-	aircraft af;
-	car cr;
-	
-	ve->start();
-	ve->stop();
-	delete ve;
-	
-	ve = &af;
-	ve->start();
-	ve->stop();
-	
-	ve = &cr;
-	ve->start();
-	ve->stop();
+    vehicle* ve = new vehicle;  // 抽象基礎類別不可實體化，所以只能宣告「指標」
+    aircraft af;
+    car cr;
+
+    ve->start();
+    ve->stop();
+    delete ve;
+
+    ve = &af;
+    ve->start();
+    ve->stop();
+
+    ve = &cr;
+    ve->start();
+    ve->stop();
 
 	return 0;
 }

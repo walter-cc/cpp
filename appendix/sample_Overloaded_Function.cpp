@@ -21,7 +21,7 @@ double 引數：10.5
 
 #include <iostream>	// 引入標準程式庫中相關的輸入、輸出程式
 #include <cstdlib>
-using namespace std; 	// std 為標準程式庫的命名空間
+using namespace std; 	// std : 標準程式庫的命名空間
 
 void showpara(int); 
 void showpara(int, int); 
@@ -46,8 +46,11 @@ void showpara(double x)
          << endl; 
 } 
 
-int main() 
-{ 
+/*
+- argc : argument count(參數總和)的縮寫，代表包括指令本身的參數個數。
+- argv : argument value 的縮寫。 一個陣列，它會分拆所帶的參數放到陣列內
+*/
+int main(int argc, char *argv[]) {
 
     showpara(10); 
     showpara(20, 30); 

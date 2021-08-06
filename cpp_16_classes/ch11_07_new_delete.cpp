@@ -53,34 +53,36 @@ cc@cpp_16_classes$./main
 #include <cstdlib>
 using namespace std; // std 為標準程式庫的命名空間
 
-class Student       //宣告類別
-{
-    private:            //私用資料成員
+class Student {         // 宣告類別
+
+    private:            // 私用資料成員
         char StuID[8];	
         float Score_E, Score_M, Score_T, Score_A;
 
-    public:             //公用資料成員
-        Student();      //宣告預設建構子(constructor)
-        ~Student();     //宣告解構子(destructor)
+    public:             // 公用資料成員
+        Student();      // 宣告預設建構子(constructor)
+        ~Student();     // 宣告解構子(destructor)
 
-    void input_data();  //宣告成員函數的原型
+    void input_data();  // 宣告成員函數的原型
     void show_data();
+    
 };  // 記得加上 ";"		#### 重要
 
-Student::Student()      //constructor設定資料成員的初始值	
+Student::Student()      // constructor設定資料成員的初始值	
 {
     cout << "+++++執行建構子+++++" << endl;
 }
 
-Student::~Student()     //destructor
+Student::~Student()     // destructor
 {
     cout << "-----執行解構子-----" << endl;
 }
 
 void Student::input_data()      //實作input_data	
 {
-    //cout 用來輸出的物件
-    //endl : end of line，換行，同 '\n'
+    // cout 用來輸出的物件
+    // endl : end of line，換行，同 '\n'
+    // 用作輸出的 `cout` 及 `endl` 則來自 標準程式庫 (standard library) 中的 `std` 命名空間
     cout << "輸入學號" << endl;
     cout << "學號 : " ;
     cin >> StuID;
@@ -97,23 +99,45 @@ void Student::show_data()       //實作show_data
     Score_T = Score_E + Score_M;
     Score_A = (Score_E + Score_M)/2;
 
-    //cout 用來輸出的物件
-    //endl : end of line，換行，同 '\n'
+    // cout 用來輸出的物件
+    // endl : end of line，換行，同 '\n'
+    // 用作輸出的 `cout` 及 `endl` 則來自 標準程式庫 (standard library) 中的 `std` 命名空間
     cout << "==============" << endl;
     cout << "學號" << StuID << endl;
     cout << "總分是" << Score_T << "分，平均是" << Score_A << "分" << endl;
 }
 
-int main(void) {
+/*
+- argc : argument count(參數總和)的縮寫，代表包括指令本身的參數個數。
+- argv : argument value 的縮寫。 一個陣列，它會分拆所帶的參數放到陣列內
+*/
+int main(int argc, char *argv[]) {
 	
-    Student *stud1 = new Student;   //宣告class Student 的 指標物件，此時會呼叫無參數的建構
+    Student *stud1 = new Student;       //宣告class Student 的 指標物件，此時會呼叫無參數的建構
 
     stud1->input_data();
 
     stud1->show_data();
 
     delete stud1;						//呼叫解構子 (delete 指標的名字)
+    
+/*
+    如果把 delete stud1; 註解，則不不會呼叫解構子，如下
+    
+    cc@cpp_16_classes$g++ ch11_07_new_delete.cpp -o test
+    cc@cpp_16_classes$./test 
+    +++++執行建構子+++++
+    輸入學號
+    學號 : 12345
+    輸入英文成績 : 
+    100
+    輸入數學成績 : 
+    99
+    ==============
+    學號12345
+    總分是199分，平均是99.5分
 
+*/
 
     return 0;
 }

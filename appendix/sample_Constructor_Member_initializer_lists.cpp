@@ -20,19 +20,19 @@ Something(1, 2.2, c)
 
 */
 
-#include <iostream>	// 引入標準程式庫中相關的輸入、輸出程式
+#include <iostream>	    // 引入標準程式庫中相關的輸入、輸出程式
 #include <cstdlib>
-using namespace std; // std 為標準程式庫的命名空間
+using namespace std;        // std : 標準程式庫的命名空間
 
 //#define OLD_METHOLD
 
 #ifdef OLD_METHOLD
-class Something 
-{
-    private:
+class Something {       //宣告類別
+
+    private:            // 私用資料成員
         const int m_value;
 
-    public:
+    public:             // 公用資料成員
         Something()
         {
             m_value = 1; // error: const vars can not be assigned to
@@ -52,14 +52,14 @@ Assigning values to const or reference member variables in the body of the const
 
 //This is something that is best learned by example. Revisiting our code that does assignments in the constructor body:
 
-class Something
-{
-    private:
+class Something {       //宣告類別
+
+    private:            // 私用資料成員
         int m_value1;
         double m_value2;
         char m_value3;
 
-    public:
+    public:             // 公用資料成員
         //The member initializer list is inserted after the constructor parameters. It begins with a colon (:), and then lists each variable to initialize along with the value for that variable separated by a comma.
 
         Something() : m_value1(1), m_value2(2.2), m_value3('c') // directly initialize our member variables
@@ -75,10 +75,14 @@ class Something
 
 #endif
 
-int main(void) {
+/*
+- argc : argument count(參數總和)的縮寫，代表包括指令本身的參數個數。
+- argv : argument value 的縮寫。 一個陣列，它會分拆所帶的參數放到陣列內
+*/
+int main(int argc, char *argv[]) {
 
     Something something;
-    something.print();
+    something.print();      // Something(1, 2.2, c)
 
     return 0;
 }
